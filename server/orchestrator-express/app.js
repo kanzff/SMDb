@@ -1,10 +1,12 @@
 const express = require('express')
+const router = require('./routes/index')
 const app = express()
 const port = 4000
 
-app.get('/', (req, res) => {
-  res.status(200).json('Jalan App nya')
-})
+app.use(express.json())
+app.use(express.urlencoded({ extended: true}))
+
+app.use('/', router)
 
 app.listen(port, () => {
   console.log('app listening on port ' + port)
