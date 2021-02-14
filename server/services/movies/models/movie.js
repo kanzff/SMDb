@@ -6,6 +6,12 @@ class Movie {
     return getDatabase().collection('movies').find().toArray()
   }
 
+  static findById(movieId) {
+    return getDatabase().collection('movies').findOne(
+      {"_id": ObjectID(movieId)}
+    )
+  }
+
   static create(movie) {
     return getDatabase().collection('movies').insertOne(movie)
   }

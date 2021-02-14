@@ -3,6 +3,8 @@ const { SeriesController } = require('../controllers/seriesControllers')
 
 router.get('/', SeriesController.find)
 
+router.get('/:id', SeriesController.findById)
+
 router.post('/', SeriesController.create)
 
 router.put('/:id', SeriesController.update)

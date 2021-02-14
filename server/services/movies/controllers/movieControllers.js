@@ -11,6 +11,17 @@ class MovieController {
     }
   }
 
+  static async findById(req, res) {
+    const id = req.params.id
+    try {
+      const movie = await Movie.findById(id)
+      // console.log(movie)
+      res.status(200).json(movie)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
   static async create(req, res) {
     try {
       const movie = await Movie.create(req.body)

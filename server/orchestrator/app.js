@@ -25,6 +25,8 @@ const typeDefs = gql`
   type Query {
     getMovies: [Movie]
     getSeries: [Series]
+    getMovie(_id: ID): Movie
+    getOneSeries(_id: ID): Series
   }
 
   input MovieInput {
@@ -73,6 +75,20 @@ const resolvers = {
           })
       }
     },
+    getMovie: (parent, args, context, info) => {
+      const { _id } = args
+      return axios({
+        url: `http://localhost:4001/movies/${_id}`,
+        method: 'GET'
+      })
+        .then(({data}) => {
+          // console.log('bukan dari redis')
+          return data
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
     getSeries: async () => {
       const seriesData = await redis.get('series:data')
       if (seriesData) {
@@ -92,6 +108,20 @@ const resolvers = {
             console.log(err)
           })
       }
+    },
+    getOneSeries: (parent, args, context, info) => {
+      const { _id } = args
+      return axios({
+        url: `http://localhost:4002/series/${_id}`,
+        method: 'GET'
+      })
+        .then(({data}) => {
+          // console.log('bukan dari redis')
+          return data
+        })
+        .catch(err => {
+          console.log(err)
+        })
     }
   },
   Mutation: {
@@ -160,5 +190,5 @@ const resolvers = {
 const server = new ApolloServer({ typeDefs, resolvers})
 
 server.listen().then(({url}) => {
-  console.log('server ready at' + url)
+  console.log('server ready at ' + url)
 })

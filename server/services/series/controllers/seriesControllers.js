@@ -11,6 +11,16 @@ class SeriesController {
     }
   }
 
+  static async findById(req, res) {
+    const id = req.params.id
+    try {
+      const series = await Series.findById(id)
+      res.status(200).json(series)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
   static async create(req, res) {
     try {
       const series = await Series.create(req.body)

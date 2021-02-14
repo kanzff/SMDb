@@ -6,6 +6,12 @@ class Series {
     return getDatabase().collection('series').find().toArray()
   }
 
+  static findById(seriesId) {
+    return getDatabase().collection('series').findOne(
+      {"_id": ObjectID(seriesId)}
+    )
+  }
+
   static create(series) {
     return getDatabase().collection('series').insertOne(series)
   }
