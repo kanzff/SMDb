@@ -10,8 +10,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "apollo-server": "^2.21.0",
     "axios": "^0.21.1",
     "express": "^4.17.1",
+    "graphql": "^15.5.0",
     "ioredis": "^4.22.0",
     "mongodb": "^3.6.4"
   }
