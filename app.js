@@ -9,7 +9,7 @@ const typeDefs = gql`
     title: String
     overview: String
     poster_path: String
-    rating: Float
+    popularity: Float
     tags: [String]
   }
 
@@ -18,7 +18,7 @@ const typeDefs = gql`
     title: String
     overview: String
     poster_path: String
-    rating: Float
+    popularity: Float
     tags: [String]
   }
 
@@ -33,7 +33,7 @@ const typeDefs = gql`
     title: String
     overview: String
     poster_path: String
-    rating: Float
+    popularity: Float
     tags: [String]
   }
 
@@ -42,7 +42,7 @@ const typeDefs = gql`
     title: String
     overview: String
     poster_path: String
-    rating: Float
+    popularity: Float
     tags: [String]
   }
 
@@ -126,7 +126,7 @@ const resolvers = {
   },
   Mutation: {
     addMovie: async (parent, args, context, info) => {
-      const { title, overview, poster_path, rating, tags } = args.data
+      const { title, overview, poster_path, popularity, tags } = args.data
       await redis.del('movies:data')
 
       return axios({
@@ -136,7 +136,7 @@ const resolvers = {
           title,
           overview,
           poster_path,
-          rating,
+          popularity,
           tags
         }
       })
@@ -148,7 +148,7 @@ const resolvers = {
         })
     },
     updateMovie: async (parent, args, context, info) => {
-      const { _id, title, overview, poster_path, rating, tags } = args.data
+      const { _id, title, overview, poster_path, popularity, tags } = args.data
       await redis.del('movies:data')
 
       return axios({
@@ -158,7 +158,7 @@ const resolvers = {
           title,
           overview,
           poster_path,
-          rating,
+          popularity,
           tags
         }
       })
