@@ -77,20 +77,25 @@ html, body {
 }
 
 .card-detail {
+  width: 189px;
+  height: 85px;
   position: absolute;
   bottom: 20px;
 }
 
 .card-body {
   height: 170px;
+  padding: 0px;
 }
 
 .card-title {
+  margin: 10px;
   font-size: 16px;
 }
 
-.btn {
+.card-btn {
   font-size: 15px;
+  padding: 0px;
 }
 
 .card-img {

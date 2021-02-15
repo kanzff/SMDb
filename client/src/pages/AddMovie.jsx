@@ -38,7 +38,8 @@ export default function AddMovie() {
     title: "",
     overview: "",
     poster_path: "",
-    popularity: ""
+    popularity: "",
+    tags: ""
   })
 
   function handleInputChange(e) {
@@ -50,8 +51,7 @@ export default function AddMovie() {
   }
 
   function addNewMovie(e) {
-    const { title, overview, poster_path, popularity } = inputMovie
-    console.log('masuk')
+    const { title, overview, poster_path, popularity, tags } = inputMovie
     e.preventDefault()
     addMovie({
       variables: {
@@ -59,7 +59,8 @@ export default function AddMovie() {
           title,
           overview,
           poster_path,
-          popularity: Number(popularity)
+          popularity: Number(popularity),
+          tags
         }
       }
     })
@@ -110,7 +111,16 @@ export default function AddMovie() {
             onChange={(e) => handleInputChange(e)}
             ></input>
           </div><br/>
-          <button type="submit" className="btn btn-danger text-dark">Add</button>
+          <div className="form-group">
+            <input 
+            type="text" 
+            name="tags" className="form-control" 
+            placeholder="Tags1, Tags2, .."
+            value={inputMovie.tags}
+            onChange={(e) => handleInputChange(e)}
+            ></input>
+          </div><br/>
+          <button type="submit" className="btn add-btn btn-danger text-dark">Add</button>
         </form>
       </div>
     </>
