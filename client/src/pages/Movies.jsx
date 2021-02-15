@@ -1,9 +1,8 @@
 import React from 'react'
 import Movie from '../components/Movie'
-import Serie from '../components/Serie'
 import { useQuery, gql } from '@apollo/client'
 
-const GET_MOVIES_AND_SERIES = gql`
+const GET_MOVIES = gql`
   query {
     getMovies {
       _id
@@ -12,22 +11,14 @@ const GET_MOVIES_AND_SERIES = gql`
       poster_path
       popularity
       tags
-    }
-    getSeries {
-      _id
-      title
-      overview
-      poster_path
-      popularity
-      tags
+
     }
   }
 `
 
+export default function Movies() {
+  const { data: movies, loading, error } = useQuery(GET_MOVIES)
 
-export default function Home() {
-  const { data, loading, error } = useQuery(GET_MOVIES_AND_SERIES)
-  
   if (loading) {
     return(
       <div className="d-flex justify-content-center loading">
@@ -42,14 +33,8 @@ export default function Home() {
     <>
       <h1 className="text-danger content">Movies</h1>
       <div className="movies row">
-        {data.getMovies.map(movie => {
+        {movies.getMovies.map(movie => {
           return <Movie movie={movie} key={movie._id}></Movie> 
-        })}
-      </div>
-      <h1 className="text-danger content">Series</h1>
-      <div className="series row">
-        {data.getSeries.map(serie => {
-          return <Serie serie={serie} key={serie._id}></Serie> 
         })}
       </div>
     </>
