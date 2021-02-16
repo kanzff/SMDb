@@ -43,7 +43,7 @@ export default function Movie({movie}) {
 
   }
 
-  const tags = movie.tags?.join(', ')
+  // const tags = movie.tags?.join(', ')
   return(
     <div className="col-2" style={{marginBottom: '12px'}}>
         <div className="card">
@@ -54,7 +54,7 @@ export default function Movie({movie}) {
               <div className="row">
                 <div className="col-10">
                   <p className="card-text"><span className="fa fa-star checked text-warning"></span> <span> {movie.popularity} </span></p>
-                  <p style={{fontSize: 15}}>{tags}</p>
+                  <p style={{fontSize: 15}}>{movie.tags.join(',')}</p>
                 </div>
                 <div className="col-2">
                   <Link to={`/movies/${movie._id}`} className="btn card-btn btn-dark-block"><span className="fa fa-info-circle checked"></span></Link>

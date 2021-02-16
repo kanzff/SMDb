@@ -16,8 +16,6 @@ export default function DetailSerie() {
     }
   }
   `)
-  const tags = data?.getOneSeries.tags.join(', ')
-  console.log(data)
 
   if (loading) {
     return(
@@ -44,7 +42,7 @@ export default function DetailSerie() {
                 <p style={{textIndent: 10}}>{data.getOneSeries.overview}</p>
                 <div className="card-detail">
                   <p><span className="fa fa-star checked text-warning"></span> {data.getOneSeries.popularity}</p>
-                  <p>Tags: {tags}</p>
+                  <p>Tags: {data.getOneSeries.tags?.join(',')}</p>
                 </div>
               </div>
             </div>

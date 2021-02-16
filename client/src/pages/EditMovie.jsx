@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
-import { gql, useMutation } from '@apollo/client'
+import { useParams } from 'react-router-dom'
+import { gql, useMutation, useQuery } from '@apollo/client'
 
-const ADD_MOVIE = gql`
-  mutation AddMovie($newMovie: MovieInput){
-    addMovie(data: $newMovie){
+const EDIT_MOVIE = gql`
+  mutation EditMovie($newMovie: MovieUpdate){
+    updateMovie(data: $newMovie){
       _id
       title
       overview
@@ -29,11 +30,25 @@ const GET_MOVIES = gql`
   }
 `
 
-export default function AddMovie() {
+export default function EditMovie() {
   const history = useHistory()
-  const [addMovie, { data }] = useMutation(ADD_MOVIE, {
+  const { id } = useParams()
+  const { data, loading, error } = useQuery(gql`
+  query {
+    getMovie(_id:"${id}"){
+      _id
+      title
+      overview
+      poster_path
+      popularity
+      tags
+    }
+  }
+  `)
+  const [updateMovie] = useMutation(EDIT_MOVIE, {
     refetchQueries: [{ query: GET_MOVIES }]
   })
+  
   const [inputMovie, setInputMovie] = useState({
     title: "",
     overview: "",
@@ -41,6 +56,18 @@ export default function AddMovie() {
     popularity: "",
     tags: ""
   })
+
+  useEffect(() => {
+    if (data) {
+      setInputMovie({
+        title: data.getMovie.title,
+        overview: data.getMovie.overview,
+        poster_path: data.getMovie.poster_path,
+        popularity: data.getMovie.popularity,
+        tags: data.getMovie.tags,
+      })
+    }
+  }, [data])
 
   function handleInputChange(e) {
     const { value, name } = e.target
@@ -50,28 +77,38 @@ export default function AddMovie() {
     })
   }
 
-  function addNewMovie(e) {
+  function editNewMovie(e) {
     const { title, overview, poster_path, popularity, tags } = inputMovie
     e.preventDefault()
-    addMovie({
+    updateMovie({
       variables: {
         newMovie: {
+          _id: id,
           title,
           overview,
           poster_path,
           popularity: Number(popularity),
-          tags: tags.split(',')
+          tags
         }
       }
     })
     history.push('/movies')
   }
+  if (loading) {
+    return(
+      <div className="d-flex justify-content-center loading">
+        <div className="spinner-border text-danger" role="status">
+          <span className="sr-only"></span>
+        </div>
+      </div>
+    )
+  }
 
   return(
     <>
-      <h1 className="text-danger content">Add Movie</h1>
+      <h1 className="text-danger content">Edit Movie</h1>
       <div className="col-6 offset-3">
-        <form onSubmit={addNewMovie}>
+        <form onSubmit={editNewMovie}>
           <div className="form-group">
             <input 
               type="text" 
@@ -120,7 +157,7 @@ export default function AddMovie() {
             onChange={(e) => handleInputChange(e)}
             ></input>
           </div><br/>
-          <button type="submit" className="btn add-btn btn-danger text-dark">Add</button>
+          <button type="submit" className="btn add-btn btn-danger text-dark">Edit</button>
         </form>
       </div>
     </>

@@ -17,8 +17,6 @@ export default function DetailMovie() {
   }
   `)
   
-  const tags = data?.getMovie.tags.join(', ')
-  console.log(data)
 
   if (loading) {
     return(
@@ -45,7 +43,7 @@ export default function DetailMovie() {
                 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{data.getMovie.overview}</p>
                 <div className="card-detail">
                   <p><span className="fa fa-star checked text-warning"></span> {data.getMovie.popularity}</p>
-                  <p>Tags: {tags}</p>
+                  <p>Tags: {data.getMovie.tags.join(',')}</p>
                 </div>
               </div>
             </div>

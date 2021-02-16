@@ -18,8 +18,7 @@ const GET_SERIES = gql`
 
 export default function Series() {
   const { data: series, loading, error } = useQuery(GET_SERIES)
-  console.log(series)
-
+  
   if (loading) {
     return(
       <div className="d-flex justify-content-center loading">

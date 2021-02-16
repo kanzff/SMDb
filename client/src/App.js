@@ -14,6 +14,7 @@ import Series from './pages/Series'
 import DetailMovie from './pages/DetailMovie'
 import DetailSerie from './pages/DetailSerie'
 import AddMovie from './pages/AddMovie'
+import EditMovie from './pages/EditMovie'
 
 
 function App() {
@@ -22,7 +23,7 @@ function App() {
       <ApolloProvider client={client}>
         <div className="App container-fluid bg-dark">
           <nav className="navbar navbar-expand-lg navbar-danger bg-danger">
-            <h3 className="navbar-brand">SMDB</h3>
+            <h3 className="navbar-brand">SMDb</h3>
             <ul className="navbar-nav mr-auto">
               <li className="nav-item active">
                 <Link to="/" className="nav-link text-dark">Home</Link>
@@ -39,6 +40,9 @@ function App() {
             </ul>
           </nav>
           <Switch>
+            <Route path="/movies/edit/:id">
+              <EditMovie></EditMovie>
+            </Route>
             <Route path="/movies/create">
               <AddMovie></AddMovie>
             </Route>
