@@ -111,10 +111,6 @@ html, body {
   object-position: 50% 50%;
 }
 
-.content {
-  margin-top: 20px;
-}
-
 .detail-card-img {
   text-align: left;}
 
@@ -140,3 +136,20 @@ h4 {
 .detail-card, .card {
   font-family: 'Pangolin', cursive;
 }
+
+.content {
+  margin-top: 20px;
+  justify-content: center;
+}
+
+/* .content::after {
+  margin-left: 10px;
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  content: '';
+  background-image: url('./images/movie2.png');
+  background-color: #8b0000;
+  background-size: contain;
+  background-repeat: no-repeat;
+} */
