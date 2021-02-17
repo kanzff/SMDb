@@ -9,7 +9,7 @@ async function connect() {
 
     await client.connect()
 
-    const db = client.db('entertainme')
+    const db = client.db(process.env.DATABASE_NAME)
 
     database = db
 

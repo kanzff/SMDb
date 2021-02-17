@@ -1,23 +1,24 @@
 const { ObjectID } = require('mongodb')
 const { getDatabase } = require('../config/mongodb')
+const series = process.env.COLLECTION_NAME
 
 class Series {
   static find() {
-    return getDatabase().collection('series').find().toArray()
+    return getDatabase().collection(series).find().toArray()
   }
 
   static findById(seriesId) {
-    return getDatabase().collection('series').findOne(
+    return getDatabase().collection(series).findOne(
       {"_id": ObjectID(seriesId)}
     )
   }
 
-  static create(series) {
-    return getDatabase().collection('series').insertOne(series)
+  static create(serie) {
+    return getDatabase().collection(series).insertOne(serie)
   }
 
   static update(seriesId, data) {
-    return getDatabase().collection('series').findOneAndUpdate(
+    return getDatabase().collection(series).findOneAndUpdate(
       {"_id": ObjectID(seriesId)},
       {$set: data}
     )

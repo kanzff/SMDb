@@ -46,8 +46,17 @@ export default function Movie({movie}) {
   }
 
   function addToFavorite() {
+    let alreadyInFav = false 
     const currentFavorites = favoritesVar()
-    favoritesVar([...currentFavorites, movie])
+    currentFavorites.map(favMovie => {
+      if (favMovie._id === movie._id) {
+        alreadyInFav = true
+      }
+    })
+
+    if (alreadyInFav === false) {
+      favoritesVar([...currentFavorites, movie])
+    }
 
     history.push('/favorites')
   }
