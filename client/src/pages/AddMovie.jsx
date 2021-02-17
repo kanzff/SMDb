@@ -120,7 +120,7 @@ export default function AddMovie() {
             onChange={(e) => handleInputChange(e)}
             ></input>
           </div><br/>
-          <button type="submit" className="btn add-btn btn-light content text-dark">Add</button>
+          <button type="submit" className="btn add-btn content color-bg text-light">Add</button>
         </form>
       </div>
     </>

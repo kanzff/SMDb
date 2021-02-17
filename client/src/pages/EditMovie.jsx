@@ -157,7 +157,7 @@ export default function EditMovie() {
             onChange={(e) => handleInputChange(e)}
             ></input>
           </div><br/>
-          <button type="submit" className="btn add-btn btn-light content text-dark">Edit</button>
+          <button type="submit" className="btn add-btn content color-bg text-light">Edit</button>
         </form>
       </div>
     </>
