@@ -54,8 +54,14 @@ html, body {
 
 .navbar-brand {
   padding-top: 10px;
+  margin-left: 50px;
   color: black;
 }
+
+/* .app-content {
+  margin-left: 50px;
+  margin-right: 50px;
+} */
 
 .movies {
   margin-top: 15px;
@@ -134,7 +140,3 @@ h4 {
 .detail-card, .card {
   font-family: 'Pangolin', cursive;
 }
-
-/* .color-tx {
-  color: #b22222;
-} */

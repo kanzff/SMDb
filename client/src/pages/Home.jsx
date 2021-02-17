@@ -39,7 +39,7 @@ export default function Home() {
   }
 
   return(
-    <>
+    <div className="app-content">
       <h1 className="text-light content">Movies</h1>
       <div className="movies row">
         {data.getMovies.map(movie => {
@@ -52,6 +52,6 @@ export default function Home() {
           return <Serie serie={serie} key={serie._id}></Serie> 
         })}
       </div>
-    </>
+    </div>
   )
 }
