@@ -15,6 +15,7 @@ import DetailMovie from './pages/DetailMovie'
 import DetailSerie from './pages/DetailSerie'
 import AddMovie from './pages/AddMovie'
 import EditMovie from './pages/EditMovie'
+import Favorites from './pages/Favorites'
 
 
 function App() {
@@ -22,20 +23,23 @@ function App() {
     <Router>
       <ApolloProvider client={client}>
         <div className="App container-fluid bg-dark">
-          <nav className="navbar navbar-expand-lg navbar-danger bg-danger">
-            <h3 className="navbar-brand">SMDb</h3>
+          <nav className="navbar navbar-expand-lg navbar color-bg">
+            <h3 className="navbar-brand text-light">SMDb</h3>
             <ul className="navbar-nav mr-auto">
               <li className="nav-item active">
-                <Link to="/" className="nav-link text-dark">Home</Link>
+                <Link to="/" className="nav-link text-light">Home</Link>
               </li>
               <li className="nav-item">
-                <Link to="/movies" className="nav-link text-dark">Movies</Link>
+                <Link to="/movies" className="nav-link text-light">Movies</Link>
               </li>
               <li className="nav-item">
-                <Link to="/movies/create" className="nav-link text-dark">Add Movie</Link>
+                <Link to="/movies/create" className="nav-link text-light">Add Movie</Link>
               </li>
               <li className="nav-item">
-                <Link to="/series" className="nav-link text-dark">Series</Link>
+                <Link to="/series" className="nav-link text-light">Series</Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/favorites" className="nav-link text-light">Favorites</Link>
               </li>
             </ul>
           </nav>
@@ -57,6 +61,9 @@ function App() {
             </Route>
             <Route path="/series">
               <Series></Series>
+            </Route>
+            <Route path="/favorites">
+              <Favorites></Favorites>
             </Route>
             <Route path="/">
               <Home></Home>

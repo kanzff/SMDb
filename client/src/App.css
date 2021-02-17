@@ -115,9 +115,26 @@ html, body {
 h4 {
   margin-top: 25px;
   margin-bottom: 15px;
+  font-weight: bold
 }
 
 .col-4 {
   padding-top: 25px;
   padding-bottom: 25px;
 }
+
+.color-bg {
+  background-color: #8b0000;
+}
+
+.navbar-brand, .nav-link, .content {
+  font-family: Allerta Stencil; 
+}
+
+.detail-card, .card {
+  font-family: 'Pangolin', cursive;
+}
+
+/* .color-tx {
+  color: #b22222;
+} */

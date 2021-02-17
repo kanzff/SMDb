@@ -69,7 +69,7 @@ export default function AddMovie() {
 
   return(
     <>
-      <h1 className="text-danger content">Add Movie</h1>
+      <h1 className="text-light content">Add Movie</h1>
       <div className="col-6 offset-3">
         <form onSubmit={addNewMovie}>
           <div className="form-group">
@@ -120,7 +120,7 @@ export default function AddMovie() {
             onChange={(e) => handleInputChange(e)}
             ></input>
           </div><br/>
-          <button type="submit" className="btn add-btn btn-danger text-dark">Add</button>
+          <button type="submit" className="btn add-btn btn-light content text-dark">Add</button>
         </form>
       </div>
     </>

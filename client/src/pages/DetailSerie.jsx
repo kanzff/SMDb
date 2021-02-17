@@ -20,7 +20,7 @@ export default function DetailSerie() {
   if (loading) {
     return(
       <div className="d-flex justify-content-center loading">
-        <div className="spinner-border text-danger" role="status">
+        <div className="spinner-border text-light" role="status">
           <span className="sr-only"></span>
         </div>
       </div>
@@ -29,7 +29,7 @@ export default function DetailSerie() {
 
   return(
     <>
-      <h1 className="text-danger content">Detail</h1>
+      <h1 className="text-light content">Detail</h1>
       <div className="row content">
         <div className="col-8 offset-2 detail">
           <div className="card">

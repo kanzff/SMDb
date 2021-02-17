@@ -97,7 +97,7 @@ export default function EditMovie() {
   if (loading) {
     return(
       <div className="d-flex justify-content-center loading">
-        <div className="spinner-border text-danger" role="status">
+        <div className="spinner-border text-light" role="status">
           <span className="sr-only"></span>
         </div>
       </div>
@@ -106,7 +106,7 @@ export default function EditMovie() {
 
   return(
     <>
-      <h1 className="text-danger content">Edit Movie</h1>
+      <h1 className="text-light content">Edit Movie</h1>
       <div className="col-6 offset-3">
         <form onSubmit={editNewMovie}>
           <div className="form-group">
@@ -157,7 +157,7 @@ export default function EditMovie() {
             onChange={(e) => handleInputChange(e)}
             ></input>
           </div><br/>
-          <button type="submit" className="btn add-btn btn-danger text-dark">Edit</button>
+          <button type="submit" className="btn add-btn btn-light content text-dark">Edit</button>
         </form>
       </div>
     </>

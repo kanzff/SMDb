@@ -7,7 +7,7 @@ export default function Movie({serie}) {
         <div className="card">
           <img className="card-img" src={serie.poster_path} style={{height: '53%'}} alt="migg"></img>
           <div className="card-body" style={{textAlign: 'left'}}>
-            <h6 className="card-title" style={{textAlign: 'center'}}>{serie.title}</h6>
+            <h6 className="card-title" style={{textAlign: 'center', fontWeight: 'bold'}}>{serie.title}</h6>
             <div className="card-detail container">
               <div className="row">
                 <div className="col-10">
@@ -16,7 +16,6 @@ export default function Movie({serie}) {
                 </div>
                 <div className="col-2">
                   <Link to={`/series/${serie._id}`} className="btn card-btn btn-dark-block"><span className="fa fa-info-circle checked"></span></Link>
-                  <Link to={`/series/edit/${serie._id}`} className="btn card-btn btn-dark-block"><span className="fa fa-cog"></span></Link>
                 </div>
               </div>
             </div>

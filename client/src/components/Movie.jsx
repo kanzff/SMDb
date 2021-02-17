@@ -1,6 +1,7 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { gql, useMutation } from '@apollo/client'
+import { favoritesVar } from '../config/cache'
 
 const DESTROY_MOVIE = gql`
   mutation DestroyMovie($id: ID){
@@ -29,6 +30,7 @@ const GET_MOVIES = gql`
 
 
 export default function Movie({movie}) {
+  const history = useHistory()
   const [destroyMovie, { data }] = useMutation(DESTROY_MOVIE, {
     refetchQueries: [{ query: GET_MOVIES }]
   })
@@ -43,17 +45,28 @@ export default function Movie({movie}) {
 
   }
 
+  function addToFavorite() {
+    const currentFavorites = favoritesVar()
+    favoritesVar([...currentFavorites, movie])
+
+    history.push('/favorites')
+  }
+
   // const tags = movie.tags?.join(', ')
   return(
     <div className="col-2" style={{marginBottom: '12px'}}>
         <div className="card">
           <img className="card-img" src={movie.poster_path} style={{height: '53%'}} alt="migg"></img>
           <div className="card-body" style={{textAlign: 'left'}}>
-            <h6 className="card-title" style={{textAlign: 'center'}}>{movie.title}</h6>
+            <h6 className="card-title" style={{textAlign: 'center', fontWeight: 'bold'}}>{movie.title}</h6>
             <div className="card-detail container">
               <div className="row">
                 <div className="col-10">
-                  <p className="card-text"><span className="fa fa-star checked text-warning"></span> <span> {movie.popularity} </span></p>
+                  <p className="card-text"><span className="fa fa-star checked text-warning"></span> <span> {movie.popularity} </span>
+                    <button onClick={() => addToFavorite()} className="btn card-btn btn-block text-danger" style={{marginLeft: 35}}>
+                      <span className="fa fa-heart"></span>
+                    </button>
+                  </p>
                   <p style={{fontSize: 15}}>{movie.tags.join(',')}</p>
                 </div>
                 <div className="col-2">

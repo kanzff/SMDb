@@ -21,7 +21,7 @@ export default function DetailMovie() {
   if (loading) {
     return(
       <div className="d-flex justify-content-center loading">
-        <div className="spinner-border text-danger" role="status">
+        <div className="spinner-border text-light" role="status">
           <span className="sr-only"></span>
         </div>
       </div>
@@ -30,7 +30,7 @@ export default function DetailMovie() {
 
   return(
     <>
-      <h1 className="text-danger content">Detail</h1>
+      <h1 className="text-light content">Detail</h1>
       <div className="row content">
         <div className="col-8 offset-2 detail">
           <div className="card">
@@ -40,7 +40,7 @@ export default function DetailMovie() {
               </div>
               <div className="col-7 offset-1" style={{textAlign: "left"}}>
                 <h4>{data.getMovie.title}</h4>
-                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{data.getMovie.overview}</p>
+                <p style={{textIndent: 10}}>{data.getMovie.overview}</p>
                 <div className="card-detail">
                   <p><span className="fa fa-star checked text-warning"></span> {data.getMovie.popularity}</p>
                   <p>Tags: {data.getMovie.tags.join(',')}</p>

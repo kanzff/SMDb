@@ -31,7 +31,7 @@ export default function Home() {
   if (loading) {
     return(
       <div className="d-flex justify-content-center loading">
-        <div className="spinner-border text-danger" role="status">
+        <div className="spinner-border text-light" role="status">
           <span className="sr-only"></span>
         </div>
       </div>
@@ -40,13 +40,13 @@ export default function Home() {
 
   return(
     <>
-      <h1 className="text-danger content">Movies</h1>
+      <h1 className="text-light content">Movies</h1>
       <div className="movies row">
         {data.getMovies.map(movie => {
           return <Movie movie={movie} key={movie._id}></Movie> 
         })}
       </div>
-      <h1 className="text-danger content">Series</h1>
+      <h1 className="text-light content">Series</h1>
       <div className="series row">
         {data.getSeries.map(serie => {
           return <Serie serie={serie} key={serie._id}></Serie> 
